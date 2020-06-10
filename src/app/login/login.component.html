@@ -1,0 +1,46 @@
+
+
+<div class="row justify-content-center mt-5">
+  <div class="col-md-4 register-employee">
+    <!-- form card register -->
+    <h3>Login</h3>
+    <div class="card-body">
+      <form [formGroup]="Login" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="inputEmail3">Email</label>
+          <input class="form-control" type="text" formControlName="email">
+        
+          <div class="invalid-feedback" *ngIf="isFieldValid('email')">
+            <span *ngIf="Login.hasError('required',['email'])"> Enter valid email.</span>
+          </div>
+        </div>
+
+        <div class="form-group ">
+          <label for="inputVerify3">Password</label>
+          <div class="input-group">
+          <input class="form-control" [type]="fieldTextType ? 'text' : 'password'" formControlName="password">
+          <div class="input-group-append">
+            <span class="input-group-text">
+              <i
+                class="fa"
+                [ngClass]="{'fa-eye-slash': !fieldTextType,
+                  'fa-eye': fieldTextType
+                }"
+                (click)="toggleFieldTextType()"
+              ></i>
+            </span>
+          </div>
+        </div>
+          <div class="invalid-feedback" *ngIf="isFieldValid('password')">
+            <span *ngIf="Login.hasError('required',['password'])">Enter your Password.</span>
+          </div>
+        
+        </div>
+
+        <div class="form-group">
+          <button class="btn btn-success btn-lg btn-block" type="submit">Login</button>
+          <!-- <a routerLink="/register">Register</a> -->
+        </div>
+      </form>
+  </div><!-- form card register -->
+</div>
